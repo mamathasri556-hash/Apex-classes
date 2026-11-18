@@ -20,6 +20,11 @@ public class CasetriggerHandler {
                 );
             }
         }
+    } 
+    public static void case2(List<Case>cases, map<Id, Case> oldMap){
+        
+        for(Case cos: cases){
+            Case oldCase = oldMap.get(cos.Id);
+        }
     }
-    
-}
+    }

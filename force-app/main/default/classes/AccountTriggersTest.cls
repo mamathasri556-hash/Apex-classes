@@ -35,5 +35,15 @@ public class AccountTriggersTest {
                     );
                 }
                 Test.stopTest();
-            }
-        }
+            } 
+    @isTest
+    public static void getTestMethods(){
+        Account acc = new Account( 
+        Name = 'sri',
+        Industry = 'Healthcare',
+        Rating = 'Hot' 
+        ); 
+        insert acc; 
+        acc = [SELECT Rating FROM Account WHERE Id = :acc.Id];
+        } 
+}
