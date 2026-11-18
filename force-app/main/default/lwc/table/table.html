@@ -1,0 +1,35 @@
+<template>
+    <div style="height: 400px;">
+        <lightning-datatable
+                key-field="id" 
+                data={data} 
+                columns={columns}>
+        </lightning-datatable> 
+        </div> 
+        <template for:each={items} for:item="item">
+                <p key={item}>{item}</p> 
+        </template>  
+
+        <template for:each={fruits} for:item="fruit">
+                <p key={fruit}>{fruit}</p>
+        </template> 
+        <template for:each={flowers} for:item="flower">
+                <p key={flower}>{flower}</p> 
+        </template> 
+        <template for:each={govas} for:item="gova">
+                <p key={gova}>{gova}</p>
+        </template>  
+        <lightning-combobox
+               label="Select Fruits" 
+               options={fruitOptions}>
+        </lightning-combobox>
+                <lightning-avatar 
+                src="https://v1.lightningdesignsystem.com/assets/images/avatar2.jpg">
+                </lightning-avatar> 
+                <lightning-flow 
+                       flow-api-name='Survey_customers' 
+                       flow-input-varibles={inputvaribles} 
+                       onstatuschange={handleStatusChange}
+                >
+                </lightning-flow> 
+</template>

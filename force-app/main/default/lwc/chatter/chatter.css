@@ -1,0 +1,30 @@
+.chatbot-container{
+    width:400px;
+    height:500px;
+    border:1px solid black;
+}
+
+.chatbot-header{
+    background:green;
+    color:white;
+    padding:20px;
+}
+
+.chatbot-message{
+    width:400px;
+    height:300px;
+}
+
+.chatbot-input{
+    padding:20px;
+}
+
+.chatbot-inbound{
+    width:250px;
+    padding:8px;
+} 
+.chatbot-send-btn{
+    background:rgb(68, 30, 181);
+    color:white;
+    padding:8px;
+}

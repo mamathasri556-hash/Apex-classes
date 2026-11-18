@@ -1,0 +1,136 @@
+<template>
+    <!-- Buttons -->
+    <div class="button">
+        <lightning-button label="New" onclick={handleNew}></lightning-button>
+        <lightning-button label="Import"></lightning-button>
+        <lightning-button label="Printable View"></lightning-button>
+        <lightning-button label="Analyze with Grid"></lightning-button>
+    </div>
+
+    <!-- Create Account Modal -->
+    <template if:true={showModal}>
+        <section role="dialog" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Create Account</h2>
+                </header>
+
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-record-edit-form
+                        object-api-name="Account"
+                        onsuccess={handleSuccess}>
+
+                        <lightning-input-field field-name="Name"></lightning-input-field>
+                        <lightning-input-field field-name="Site"></lightning-input-field>
+                        <lightning-input-field field-name="Website"></lightning-input-field>
+                        <lightning-input-field field-name="Phone"></lightning-input-field>
+
+                        <div class="slds-m-top_medium">
+                            <lightning-button
+                                type="submit"
+                                label="Save"
+                                variant="brand">
+                            </lightning-button>
+
+                            <lightning-button
+                                label="Cancel"
+                                onclick={handleCancel}
+                                class="slds-m-left_small">
+                            </lightning-button>
+                        </div>
+
+                    </lightning-record-edit-form>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- Edit Account Modal -->
+    <template if:true={showEditModal}>
+        <section role="dialog" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Edit Account</h2>
+                </header>
+
+                <lightning-record-edit-form
+                    object-api-name="Account"
+                    record-id={recordId}
+                    onsuccess={handleUpdateSuccess}
+                    onerror={handleUpdateError}>
+
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <lightning-input-field field-name="Name"></lightning-input-field>
+                        <lightning-input-field field-name="Site"></lightning-input-field>
+                        <lightning-input-field field-name="Phone"></lightning-input-field>
+                        <lightning-input-field field-name="Website"></lightning-input-field>
+                    </div>
+
+                    <footer class="slds-modal__footer">
+                        <lightning-button
+                            label="Cancel"
+                            onclick={closeModal}>
+                        </lightning-button>
+
+                        <lightning-button
+                            type="submit"
+                            variant="brand"
+                            label="Update">
+                        </lightning-button>
+                    </footer>
+
+                </lightning-record-edit-form>
+
+            </div>
+        </section>
+
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- Search -->
+    <div class="header-section">
+        <div class="search-box">
+            <lightning-input
+                type="search"
+                variant="label-hidden"
+                placeholder="Search this List"
+                onkeyup={handleSearch}>
+            </lightning-input>
+        </div>
+
+        <div class="icon-container">
+            <lightning-button-icon
+                icon-name="utility:refresh"
+                alternative-text="Refresh">
+            </lightning-button-icon>
+
+            <lightning-button-icon
+                icon-name="utility:edit"
+                alternative-text="Edit">
+            </lightning-button-icon>
+
+            <lightning-button-icon
+                icon-name="utility:settings"
+                alternative-text="Settings">
+            </lightning-button-icon>
+
+            <lightning-button-icon
+                icon-name="utility:filterList"
+                alternative-text="Filter">
+            </lightning-button-icon>
+        </div>
+
+        <lightning-datatable
+            key-field="Id"
+            data={filteredData}
+            columns={columns}
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </div>
+
+</template>

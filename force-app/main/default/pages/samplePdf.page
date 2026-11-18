@@ -1,0 +1,4 @@
+<apex:page renderAs="pdf">
+    <h1>Hello Mamatha</h1>
+    <p>This is a sample uncompressed PDF for testing.</p>
+</apex:page>

@@ -1,0 +1,20 @@
+.header-section{
+	display: flex;
+	justify-content: flex-end;
+	align-items: end; 
+	gap:4px;
+} 
+.search-box{
+	width:50px; 
+	text-align: left; 
+	justify-content: left;
+} 
+.icon-container{ 
+	display: flex;
+	gap: 4px; 
+	justify-content: left;
+} 
+.button{
+	margin-bottom: 10px;
+	justify-content: left;
+}

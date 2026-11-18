@@ -1,0 +1,119 @@
+<apex:page standardController="Opportunity" 
+           extensions="Pages"
+           renderAs="pdf" 
+           showHeader="false"
+           sidebar="false" 
+           applyBodyTag="false"
+           applyHtmlTag="false"> 
+      <html> 
+        <head> 
+           <style>
+             .heading{
+                font-size: 35px;
+                font-weight: bold; 
+                text-align: center; 
+                color:rgb(3,45,96);
+             } 
+             .main{
+                  font-size: 25px;
+                  text-align: center;
+             } 
+             .productTable{
+               width: 100%;
+               border-collapse:collapse;
+               margin-top: 15px;
+             }
+             .productTable th{
+                border: 1px solid rgb(5, 3, 25);
+                padding: 8px; 
+                color:white
+                text-align: center; 
+                background-color:rgb(3, 45, 96);
+             } 
+             .productTable td{
+                  border: 1px solid black;
+                  padding: 8px;
+                  text-align: left;
+             }
+             p{
+                  font-size: 8px; 
+                  text-align: left;
+             }
+             .firstPara{
+                margin-bottom: 8px;
+                font-size:20px;
+
+   
+             }
+             .secondPara{
+                  margin-top: 0; 
+                  font-size:20px;
+             }  
+             h1{
+               color:rgb(3,45,96);
+             }
+             h2{
+                  color:rgb(3,45,96);
+             } 
+             h3{ 
+               text-align:left;
+               font-size:25px;
+               color:rgb(10, 122, 213);
+
+             }
+             .product{
+               color:rgb(3, 45, 96);
+             }
+             li{
+               font-size:20px;
+             } 
+             li::marker{
+               color:rgb(10,122,213)
+             } 
+            </style>
+        </head> 
+        <body>
+         <div
+            class="heading" title="Salesforce">
+               <b>Salesforce Platfrom events</b>
+         </div> 
+         <p class="main">Training Guide&amp;Hands-On PraciceTasks(Begineer to Adavanced)</p> 
+         <hr/>
+         <h1>What Are Platform Events?</h1>
+          <p class="firstPara">Platform Events are Salesforce's implementation of an event-driven architecture — a lightweight, secure way to publish and subscribe to real-time data changes, both within Salesforce and with external systems, without polling or tight coupling.</p>
+          <p class="secondPara">Think of it like a notification bus: something happens ("Order Shipped"), an event is published, and any number of subscribers (Flows, Apex triggers, external apps, Lightning components) react independently — the publisher doesn't need to know who is listening</p> 
+          <h2>Key Building Blocks</h2> 
+          <table class="productTable"> 
+            <tr>
+               <th>Product Name</th>
+               <th>Quantity</th>
+               <th>Unit Price</th>
+               <th>Total Price</th>
+            </tr>
+            <apex:repeat value="{!opps}" var="lineItem">
+            <tr>
+               <td>{!lineItem.PricebookEntry.Product2.Name}</td>
+               <td>{!lineItem.Quantity}</td>
+               <td>{!lineItem.UnitPrice}</td>
+               <td>{!lineItem.TotalPrice}</td>
+            </tr>
+            </apex:repeat> 
+          </table>
+        <h3>Exact Use Cases</h3> 
+           <ul>
+              <li>
+                 <b>Decoupling systems</b> — e.g., an Order Management system publishes "Order Created" and Shipping,
+                 Billing, and Notifications all subscribe independently, with no direct dependency between them.
+              </li>
+              <li>
+                    <b>Integration with external systems</b> — publish events that middleware (MuleSoft, external apps via
+                    CometD) consumes in near real time, instead of external systems polling Salesforce APIs  
+              </li>
+                <li>
+                  <b> Async processing to avoid governor limits</b> — instead of doing everything synchronously in one trigger,
+                   publish an event and let a separate subscriber handle heavy logic 
+                </li> 
+            </ul>  
+         </body> 
+      </html> 
+</apex:page>

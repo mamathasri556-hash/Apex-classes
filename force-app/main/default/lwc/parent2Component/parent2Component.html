@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="parent Component">
+        <template if:true={showingContact}>
+            <div class="slds-p-left_large">
+                <p>Contact name:{showingContact.name}</p> 
+                <p>phone :{showingContact.phone}</p>
+                <p>Email :{showingContact.email}</p>
+            </div>
+        </template> 
+        <c-child2component
+         onshowcontact={handleContactDetail}>
+        </c-child2component> 
+    </lightning-card>
+</template>
